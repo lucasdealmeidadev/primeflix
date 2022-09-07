@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import styles from './styles.module.css';
 import api from '../../services/api';
 
 function Home() {
@@ -14,15 +16,28 @@ function Home() {
         }
       });
 
-      console.log(response.data.results);
+      const { results } = response.data;
+      setMovies(results.slice(0, 15));
     }
 
     loadMovies();
   }, []);
 
   return (
-    <div>
-      <h1>Home</h1>
+    <div className='container'>
+      <div className={styles.list_movies}>
+        {
+          movies.map((movie) => (
+            <article key={movie.id}>
+              <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+              <strong>
+                {movie.title.substr(0, 17)} {movie.title.length > 17 && '...'}
+              </strong>
+              <Link to={`/movie/${movie.id}`}>Acessar</Link>
+            </article>
+          ))
+        }
+      </div>
     </div>
   );
 }
