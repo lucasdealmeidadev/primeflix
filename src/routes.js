@@ -3,15 +3,15 @@ import { Header } from './components';
 import { Home, Movie } from './pages';
 
 function RoutesApp() {
-    return (
-        <BrowserRouter>
-            <Header />
-            <Routes>
-                <Route path='/' element={<Home />}></Route>
-                <Route path='/movie/:id' element={<Movie />} />
-            </Routes>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/movie/:id' element={<Movie />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default RoutesApp;
