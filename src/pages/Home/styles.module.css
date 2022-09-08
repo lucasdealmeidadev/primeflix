@@ -3,7 +3,7 @@
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
-	max-width: 1200px;
+	max-width: 1150px;
 	margin: 50px auto;
 }
 
@@ -15,46 +15,44 @@
 	margin-bottom: 2em;
 	width: 19%;
 	color: #ffffff;
-	background-color: #ffffff;
 	border-radius: 5px;
-	padding: 10px;
-	border: 1px solid #dddddd;
+	background-color: #ffffff;
+	padding: 0.5em;
 	box-shadow: 0 1px 4px rgb(0 0 0 / 16%);
 }
 
 .list_movies article:hover {
 	box-shadow: none;
+	border: 1px solid #cccccc;
 }
 
 .list_movies strong {
 	margin-top: 14px;
-	margin-bottom: 14px;
+	margin-bottom: 5px;
 	text-align: center;
-	font-size: 14px;
+	font-size: 0.95em;
 	display: block;
 	color: #000000;
-	text-transform: uppercase;
 	font-weight: 700;
 }
 
+.list_movies strong:hover {
+	color: #116feb;
+}
+
 .list_movies img {
-	width: 500px;
+	display: inline-block;
 	max-width: 100%;
 	max-height: 340px;
 	object-fit: cover;
-	display: block;
 	border-radius: 5px;
 }
 
 .list_movies a {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 8px 0;
-	font-size: 18px;
-	background-color: #116feb;
 	text-decoration: none;
-	color: #ffffff;
-	width: 100%;
-	border-radius: 5px;
+}
+
+.list_movies p {
+	font-size: 0.95em;
+	color: rgba(0, 0, 0, 0.6);
 }
