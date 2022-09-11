@@ -1,25 +1,25 @@
 .not_found {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
   height: calc(100vh - 130px);  
 }
 
 .not_found h1{
-	font-size: 120px;
+  font-size: 120px;
 }
 
 .not_found a{
-	text-decoration: none;
-	background-color: #116feb;
-	color: #ffffff;
-	padding: 10px;
-	border-radius: 5px;
-	margin-top: 14px;
+  text-decoration: none;
+  background-color: #116feb;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 14px;
 }
 
 .not_found a:hover{
-	background-color: #000000;
+  background-color: #000000;
 }
