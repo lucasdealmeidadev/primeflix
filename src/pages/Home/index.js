@@ -51,7 +51,7 @@ function Home() {
   }
 
   return (
-    <div className='container'>
+    <div className={styles.container}>
       <div className={styles.title}>
         <h1>Bem-Vindo(a).</h1>
         <p>Milhões de Filmes, Séries e Pessoas para Descobrir. Explore já.</p>

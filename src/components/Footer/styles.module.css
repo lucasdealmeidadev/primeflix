@@ -8,6 +8,9 @@
   color: #fff;
 }
 
-.footer span{
+.footer p {
+  font-size: 0.9em;
+}
+.footer span {
   font-weight: bold;
 }
