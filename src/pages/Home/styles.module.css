@@ -53,6 +53,7 @@
   cursor: pointer;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  transition: all 0.5s;
 }
 
 .title form button svg {

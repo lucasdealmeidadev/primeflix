@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import styles from './styles.module.css';
@@ -42,7 +42,7 @@ function Home() {
     loadMovies();
   }, []);
 
-  if(loading) {
+  if (loading) {
     return (
       <div className={styles.loading}>
         <h2>Carregando filmes...</h2>
@@ -56,9 +56,9 @@ function Home() {
         <h1>Bem-Vindo(a).</h1>
         <p>Milhões de Filmes, Séries e Pessoas para Descobrir. Explore já.</p>
         <form>
-          <input type='text' name='search' id='search' placeholder='Pesquise por um Filme, Série ou Pessoa...'/>
+          <input type='text' name='search' id='search' placeholder='Pesquise por um Filme, Série ou Pessoa...' />
           <button type='submit'>
-             <FontAwesomeIcon icon={faSearch} size='lg'/>
+            <FontAwesomeIcon icon={faSearch} size='lg' />
           </button>
         </form>
       </div>
