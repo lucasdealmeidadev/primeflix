@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import styles from './styles.module.css';
 import api from '../../services/api';
 
@@ -30,6 +34,7 @@ function Home() {
       });
 
       const { results } = response.data;
+      console.log(results);
       setMovies(results);
     }
 
@@ -38,6 +43,16 @@ function Home() {
 
   return (
     <div className='container'>
+      <div className={styles.title}>
+        <h1>Bem-Vindo(a).</h1>
+        <p>Milhões de Filmes, Séries e Pessoas para Descobrir. Explore já.</p>
+        <form>
+          <input type='text' name='search' id='search' placeholder='Pesquise por um Filme, Série ou Pessoa...'/>
+          <button type='submit'>
+             <FontAwesomeIcon icon={faSearch} size='lg'/>
+          </button>
+        </form>
+      </div>
       <div className={styles.list_movies}>
         {
           movies.map((movie) => (
@@ -45,6 +60,12 @@ function Home() {
               <Link to={`/movie/${movie.id}`}>
                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} title={movie.title} />
               </Link>
+              <div className={styles.progressbar}>
+                <CircularProgressbar
+                  value={movie.vote_average * 10}
+                  text={`${movie.vote_average}%`}
+                />
+              </div>
               <Link to={`/movie/${movie.id}`}>
                 <strong>
                   {movie.title.substr(0, 21)} {movie.title.length > 21 && '...'}
