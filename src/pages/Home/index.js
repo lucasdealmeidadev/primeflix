@@ -9,6 +9,7 @@ import api from '../../services/api';
 
 function Home() {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const formatDate = (value) => {
     let options = {
@@ -35,10 +36,19 @@ function Home() {
 
       const { results } = response.data;
       setMovies(results);
+      setLoading(false);
     }
 
     loadMovies();
   }, []);
+
+  if(loading) {
+    return (
+      <div className={styles.loading}>
+        <h2>Carregando filmes...</h2>
+      </div>
+    );
+  }
 
   return (
     <div className='container'>
