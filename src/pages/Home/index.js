@@ -34,7 +34,6 @@ function Home() {
       });
 
       const { results } = response.data;
-      console.log(results);
       setMovies(results);
     }
 

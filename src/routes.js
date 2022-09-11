@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Header } from './components';
+import { Header, Footer } from './components';
 import { Home, Movie } from './pages';
 
 function RoutesApp() {
@@ -10,6 +10,7 @@ function RoutesApp() {
         <Route path='/' element={<Home />} />
         <Route path='/movie/:id' element={<Movie />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
