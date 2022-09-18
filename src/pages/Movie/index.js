@@ -1,5 +1,5 @@
 import { memo, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTv } from '@fortawesome/free-solid-svg-icons';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -11,6 +11,7 @@ import api from '../../services/api';
 
 function Movie() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [movie, setMovie] = useState({});
   const [loading, setLoading] = useState(true);
@@ -21,12 +22,13 @@ function Movie() {
         setMovie(response.data);
         setLoading(false);
       }).catch(() => {
-        console.log('Filme não econtrado.');
+        navigate('/', { replace: true });
+        return;
       });
     }
 
     loadMovie();
-  }, [id]);
+  }, [navigate, id]);
 
   if (loading) {
     return (
