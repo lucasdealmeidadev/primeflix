@@ -71,7 +71,7 @@ function Movie() {
             <FontAwesomeIcon icon={faPlus} size='xs' /> Salvar
           </button>
           <button>
-            <a href='/'>
+            <a href={`https://youtube.com/results?search_query=${movie.title} Trailer`} target='_blank' rel='noopener noreferrer'>
               <FontAwesomeIcon icon={faTv} size='xs' /> Trailer
             </a>
           </button>
