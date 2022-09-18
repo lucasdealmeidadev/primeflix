@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styles from './styles.module.css';
 
 function Footer() {
@@ -12,4 +13,4 @@ function Footer() {
 	);
 }
 
-export default Footer;
+export default memo(Footer);

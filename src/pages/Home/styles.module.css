@@ -1,5 +1,9 @@
 .container {
   display: block;
+  width: inherit;
+  min-height: calc(100vh - 130px);
+  padding-right: 10%;
+  padding-left: 10%;
 }
 
 .loading {
@@ -9,7 +13,8 @@
   height: calc(100vh - 130px);
 }
 
-.list_movies {
+.list_movies, 
+.search_movies {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -122,12 +127,39 @@
   margin-top: -30px;
   border-radius: 50%;
   box-shadow: 0 1px 4px rgb(0 0 0 / 16%);
+  z-index: 1;
 }
 
 .list_movies .progressbar text {
   font-size: 1.7em;
   font-weight: bold;
   user-select: none;
+}
+
+.search_movies {
+  width: 100vh;
+  justify-content: center;
+  margin: 0px auto;
+}
+
+.search_movies button {
+  text-decoration: none;
+  background-color: #3E98C7;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.search_h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.search_movies button:hover{
+  background-color: #000000;
 }
 
 @media screen and (min-width: 0px) and (max-width: 1024px) {

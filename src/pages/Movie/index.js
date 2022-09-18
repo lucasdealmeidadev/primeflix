@@ -1,7 +1,11 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTv } from '@fortawesome/free-solid-svg-icons';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 import styles from './styles.module.css';
 import api from '../../services/api';
 
@@ -13,12 +17,7 @@ function Movie() {
 
   useEffect(() => {
     async function loadMovie() {
-      await api.get(`movie/${id}`, {
-        params: {
-          api_key: '29635cea469d75e2285ac15ee8e2356e',
-          language: 'pt-BR'
-        }
-      }).then((response) => {
+      api.get(`movie/${id}`).then((response) => {
         setMovie(response.data);
         setLoading(false);
       }).catch(() => {
@@ -27,11 +26,7 @@ function Movie() {
     }
 
     loadMovie();
-
-    return () => {
-      console.log('COMPONENTE FOI DESMONTADO');
-    }
-  }, []);
+  }, [id]);
 
   if (loading) {
     return (
@@ -42,29 +37,46 @@ function Movie() {
   }
 
   return (
-    <div className={styles.movie_info}>
-      <h1>{movie.title}</h1>
+    <div className={styles.container}>
+      <div className={styles.movie_info}>
+        <h1>{movie.title}</h1>
+        <div className={styles.img}>
+          {
+            movie.backdrop_path !== null ? (
+              <LazyLoadImage
+                src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                effect='blur'
+                alt={movie.title}
+                title={movie.title}
+                placeholderSrc='/glyphicons/picture-grey.svg'
+              />
+            ) : (
+              <img
+                src='/images/placeholder_image.png'
+                alt={movie.title}
+                title={movie.title}
+              />
+            )
+          }
+        </div>
 
-      <div className={styles.img_zoom}>
-        <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title} title={movie.title} />
-      </div>
+        <h3>Sinopse</h3>
+        <span>{movie.overview}</span>
+        <strong>Avaliação: {movie.vote_average.toFixed(1)}/10</strong>
 
-      <h3>Sinopse</h3>
-      <span>{movie.overview}</span>
-      <strong>Avaliação: {movie.vote_average.toFixed(1)}/10</strong>
-
-      <div class={styles.area_buttons}>
-        <button>
-          <FontAwesomeIcon icon={faPlus} size='xs' /> Salvar
-        </button>
-        <button>
-          <a href='#'>
-            <FontAwesomeIcon icon={faTv} size='xs' /> Trailer
-          </a>
-        </button>
+        <div className={styles.area_buttons}>
+          <button>
+            <FontAwesomeIcon icon={faPlus} size='xs' /> Salvar
+          </button>
+          <button>
+            <a href='/'>
+              <FontAwesomeIcon icon={faTv} size='xs' /> Trailer
+            </a>
+          </button>
+        </div>
       </div>
     </div>
   );
 }
 
-export default Movie;
+export default memo(Movie);

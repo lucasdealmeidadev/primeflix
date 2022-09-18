@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Header, Footer } from './components';
 import { Home, Movie, Error } from './pages';
@@ -16,4 +17,4 @@ function RoutesApp() {
   );
 }
 
-export default RoutesApp;
+export default memo(RoutesApp);

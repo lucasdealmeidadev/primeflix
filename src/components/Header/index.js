@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import styles from './styles.module.css';
@@ -14,4 +15,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default memo(Header);
