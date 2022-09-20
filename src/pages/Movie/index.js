@@ -31,8 +31,7 @@ function Movie() {
   }, [navigate, id]);
 
   function saveMovie() {
-    const keyName = '@primeflix';
-    const myList = localStorage.getItem(keyName);
+    const myList = localStorage.getItem('@primeflix');
     let savedMovies = JSON.parse(myList) || [];
 
     const hasMovie = savedMovies.some((savedMovie) => savedMovie.id === movie.id);
@@ -43,7 +42,7 @@ function Movie() {
     }
 
     savedMovies.push(movie);
-    localStorage.setItem(keyName, JSON.stringify(savedMovies));
+    localStorage.setItem('@primeflix', JSON.stringify(savedMovies));
     alert('Filme salvo com sucesso.');
   }
 
