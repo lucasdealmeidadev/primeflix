@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: calc(100vh - 130px);
 }
 
 .movie_info {
@@ -17,7 +18,9 @@
 }
 
 .movie_info h1 {
+  font-size: 2em;
   margin-bottom: 14px;
+  font-weight: bold;
 }
 
 .movie_info img {
@@ -30,12 +33,22 @@
 
 .movie_info h3 {
   margin-top: 14px;
-  font-size: 1.5em;
+  font-size: 1.6em;
+  padding: 0px 0 10px 0;
 }
 
 .movie_info span {
   margin: 8px 0;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-size: 1.2em;
+  color: rgb(20, 18, 18);
+  font-weight: 500;
+  text-align: justify;
+}
+
+.movie_info strong {
+  font-size: 1.2em;
+  padding: 10px 0 0px 0;
 }
 
 .area_buttons button {
@@ -44,10 +57,10 @@
   margin-right: 12px;
   margin-top: 14px;
   margin-left: 0;
-  font-size: 20px;
+  font-size: 18px;
   border: 0;
   outline: none;
-  padding: 12px;
+  padding: 10px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.5s;

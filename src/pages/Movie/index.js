@@ -79,7 +79,7 @@ function Movie() {
           }
         </div>
 
-        <h3>Sinopse</h3>
+        <h3>Descrição</h3>
         <span>{movie.overview}</span>
         <strong>Avaliação: {movie.vote_average.toFixed(1)}/10</strong>
 

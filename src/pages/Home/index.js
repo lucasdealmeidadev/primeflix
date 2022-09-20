@@ -124,7 +124,7 @@ function Home() {
                   {
                     movie.poster_path !== null ? (
                       <LazyLoadImage
-                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                        src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
                         effect='blur'
                         alt={movie.title}
                         title={movie.title}

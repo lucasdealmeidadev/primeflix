@@ -13,7 +13,7 @@
   height: calc(100vh - 130px);
 }
 
-.list_movies, 
+.list_movies,
 .search_movies {
   display: flex;
   flex-wrap: wrap;
@@ -29,14 +29,15 @@
 }
 
 .title h1 {
-  font-size: 2.1em !important;
+  font-size: 2.4em !important;
   font-weight: 700;
   line-height: 1.5;
 }
 
 .title p {
-  font-size: 1.1em !important;
+  font-size: 1.2em !important;
   font-weight: 500;
+  color: rgb(20, 18, 18);
 }
 
 .title form input {
@@ -158,7 +159,7 @@
   text-align: center;
 }
 
-.search_movies button:hover{
+.search_movies button:hover {
   background-color: #000000;
 }
 
