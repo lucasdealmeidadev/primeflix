@@ -5,6 +5,9 @@ import { faSearch, faBackward } from '@fortawesome/free-solid-svg-icons';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
+import imageNotFound from '../../assets/images/placeholder.png';
+import placeholderImage from '../../assets/glyphicons/picture-grey.svg';
+
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'react-circular-progressbar/dist/styles.css';
 
@@ -128,11 +131,11 @@ function Home() {
                         effect='blur'
                         alt={movie.title}
                         title={movie.title}
-                        placeholderSrc='/glyphicons/picture-grey.svg'
+                        placeholderSrc={placeholderImage}
                       />
                     ) : (
                       <img
-                        src='/images/placeholder_image.png'
+                        src={imageNotFound}
                         alt={movie.title}
                         title={movie.title}
                       />
@@ -147,7 +150,7 @@ function Home() {
                 </div>
                 <Link to={`/movie/${movie.id}`}>
                   <strong>
-                    {movie.title}
+                    {movie.title.substring(0, 18)} {movie.title.length > 18 && '...'}
                   </strong>
                 </Link>
                 <p>{formatDate(movie.release_date || null)}</p>

@@ -33,7 +33,12 @@ function Favorites() {
 				<ul>
 					{movies.map((movie) => (
 						<li key={movie.id}>
-							<span>{movie.title}</span>
+							<span>
+								<Link to={`/movie/${movie.id}`}>
+									{movie.title}
+								</Link>
+							</span>
+
 							<div className={styles.area_buttons}>
 								<Link to={`/movie/${movie.id}`}>
 									<FontAwesomeIcon icon={faVideo} size='xs' /> Detalhes

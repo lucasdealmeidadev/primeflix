@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTv } from '@fortawesome/free-solid-svg-icons';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
+import imageNotFound from '../../assets/images/placeholder.png';
+import placeholderImage from '../../assets/glyphicons/picture-grey.svg';
+
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import styles from './styles.module.css';
@@ -66,11 +69,11 @@ function Movie() {
                 effect='blur'
                 alt={movie.title}
                 title={movie.title}
-                placeholderSrc='/glyphicons/picture-grey.svg'
+                placeholderSrc={placeholderImage}
               />
             ) : (
               <img
-                src='/images/placeholder_image.png'
+                src={imageNotFound}
                 alt={movie.title}
                 title={movie.title}
               />
@@ -78,7 +81,7 @@ function Movie() {
           }
         </div>
 
-        <h3>Descrição</h3>
+        <h3>Sinopse</h3>
         <span>{movie.overview}</span>
         <strong>Avaliação: {movie.vote_average.toFixed(1)}/10</strong>
 
