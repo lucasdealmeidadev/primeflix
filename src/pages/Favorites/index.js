@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRemove, faVideo } from '@fortawesome/free-solid-svg-icons';
+
 import styles from './styles.module.css';
 
 function Favorites() {
@@ -31,12 +34,14 @@ function Favorites() {
 					{movies.map((movie) => (
 						<li key={movie.id}>
 							<span>{movie.title}</span>
-							<div>
+							<div className={styles.area_buttons}>
 								<Link to={`/movie/${movie.id}`}>
-									Ver Detalhes
+									<FontAwesomeIcon icon={faVideo} size='xs' /> Detalhes
 								</Link>
 
-								<button onClick={() => removeMovie(movie.id)}>Excluir</button>
+								<button onClick={() => removeMovie(movie.id)}>
+									<FontAwesomeIcon icon={faRemove} size='xs' /> Excluir
+								</button>
 							</div>
 						</li>
 					))}
