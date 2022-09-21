@@ -2,15 +2,15 @@ import { memo } from 'react';
 import styles from './styles.module.css';
 
 function Footer() {
-	const getCurrentYear = new Date().getFullYear();
+  const getCurrentYear = new Date().getFullYear();
 
-	return (
-		<footer className={styles.footer}>
-			<p>
-				<span>Prime Flix</span> &copy; {getCurrentYear}  | Desenvolvido por Lucas de Almeida Monteiro (:
-			</p>
-		</footer>
-	);
+  return (
+    <footer className={styles.footer}>
+      <p>
+        <span>Prime Flix</span> &copy; {getCurrentYear}  | Desenvolvido por Lucas de Almeida Monteiro (:
+      </p>
+    </footer>
+  );
 }
 
 export default memo(Footer);

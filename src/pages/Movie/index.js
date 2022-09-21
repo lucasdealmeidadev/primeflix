@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTv } from '@fortawesome/free-solid-svg-icons';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { toast } from 'react-toastify';
 
 import imageNotFound from '../../assets/images/placeholder.png';
 import placeholderImage from '../../assets/glyphicons/picture-grey.svg';
@@ -40,13 +41,14 @@ function Movie() {
     const hasMovie = savedMovies.some((savedMovie) => savedMovie.id === movie.id);
 
     if (hasMovie) {
-      alert('Filme já está salvo na lista.');
+      toast.warning('Filme já está salvo em sua lista.');
       return;
     }
 
     savedMovies.push(movie);
     localStorage.setItem('@primeflix', JSON.stringify(savedMovies));
-    alert('Filme salvo com sucesso.');
+
+    toast.success('Filme salvo com sucesso.');
   }
 
   if (loading) {
