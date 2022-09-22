@@ -43,7 +43,7 @@
   line-height: 1.6;
   font-size: 1.15em;
   color: rgb(20, 18, 18);
-  font-weight: 500;
+  font-weight: 400;
   text-align: justify;
 }
 
@@ -61,8 +61,8 @@
   font-size: 18px;
   border: 0;
   outline: none;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 12px;
+  border-radius: 30px;
   cursor: pointer;
   transition: all 0.5s;
 }

@@ -36,7 +36,7 @@ html {
   background-image: linear-gradient(to right, rgba(var(--primeflixDark), 0.85) 100%, rgba(var(--primeflixDark), 0.85) 100%), url('../../assets/images/background_default.jpg');
 }
 
-.container_title {
+.grid_title {
   max-width: 1150px;
   margin: 0px auto;
 }
@@ -191,13 +191,12 @@ html {
 }
 
 @media screen and (min-width: 0px) and (max-width: 1024px) {
-  .container_title {
+  .grid_title {
     padding: 10px;
   }
   
   .list_movies {
     padding: 10px;
-    margin: 20px auto;
   }
 
   .list_movies article {
