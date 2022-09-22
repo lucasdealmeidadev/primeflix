@@ -1,9 +1,11 @@
+html {
+  --primeflixDark: 20, 18, 18;
+}
+
 .container {
   display: block;
   width: inherit;
   min-height: calc(100vh - 130px);
-  padding-right: 10%;
-  padding-left: 10%;
 }
 
 .loading {
@@ -20,45 +22,62 @@
   justify-content: space-between;
   align-items: center;
   max-width: 1150px;
-  margin: 50px auto;
+  margin: 65px auto;
 }
 
 .title {
   width: 100%;
-  margin: 50px auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 300px;
+  height: calc(100vh / 2.5);
+  max-height: 360px;
+  background-image: linear-gradient(to right, rgba(var(--primeflixDark), 0.85) 100%, rgba(var(--primeflixDark), 0.85) 100%), url('../../assets/images/background_default.jpg');
+}
+
+.container_title {
+  max-width: 1150px;
+  margin: 0px auto;
 }
 
 .title h1 {
-  font-size: 2.4em !important;
+  font-size: 3em !important;
   font-weight: 700;
   line-height: 1.5;
+  padding-top: 57px;
+  color: #ffffff;
+  text-shadow: 1px 1px 0 rgb(0 0 0 / 30%);
 }
 
 .title p {
   font-size: 1.2em !important;
   font-weight: 500;
-  color: rgb(20, 18, 18);
+  color: #ffffff;
 }
 
 .title form input {
-  padding: 13px 20px;
+  padding: 15px 20px;
   border: none;
   border: 1px solid #cccccc;
   width: 90%;
+  height: 50px;
   outline: none;
   margin-top: 20px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  font-size: 16px;
 }
 
 .title form button {
   width: 10%;
+  height: 50px;
   background-color: #3E98C7;
-  padding: 13px 20px;
+  padding: 15px 20px;
   border: none;
   cursor: pointer;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
   transition: all 0.5s;
 }
 
@@ -172,8 +191,11 @@
 }
 
 @media screen and (min-width: 0px) and (max-width: 1024px) {
-  .list_movies,
-  .title {
+  .container_title {
+    padding: 10px;
+  }
+  
+  .list_movies {
     padding: 10px;
     margin: 20px auto;
   }

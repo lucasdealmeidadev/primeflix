@@ -17,8 +17,8 @@ header {
   background-color: #ffffff;
   padding: 8px 14px;
   color: #000000;
-  border-radius: 5px;
-  font-weight: 500;
+  border-radius: 30px;
+  font-weight: 450;
 }
 
 .favorites:hover{

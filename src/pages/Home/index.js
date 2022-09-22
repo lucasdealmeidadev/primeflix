@@ -98,21 +98,23 @@ function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
-        <h1>Bem-Vindo(a).</h1>
-        <p>Milhões de Filmes, Séries e Pessoas para Descobrir. Explore já.</p>
-        <form onSubmit={handleSubmit}>
-          <input
-            type='text'
-            name='search'
-            id='search'
-            placeholder='Pesquise pelo seu filme favorito...'
-            onChange={handleChange}
-            value={search || ''}
-          />
-          <button type='submit'>
-            <FontAwesomeIcon icon={faSearch} size='lg' />
-          </button>
-        </form>
+        <div className={styles.container_title}>
+          <h1>Bem-Vindo(a).</h1>
+          <p>Milhões de Filmes, Séries e Pessoas para Descobrir. Explore já.</p>
+          <form onSubmit={handleSubmit}>
+            <input
+              type='text'
+              name='search'
+              id='search'
+              placeholder='Pesquise pelo seu filme favorito...'
+              onChange={handleChange}
+              value={search || ''}
+            />
+            <button type='submit'>
+              <FontAwesomeIcon icon={faSearch} size='xl' />
+            </button>
+          </form>
+        </div>
       </div>
       <div className={styles.list_movies}>
         {
