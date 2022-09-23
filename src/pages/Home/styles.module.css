@@ -8,13 +8,6 @@ html {
   min-height: calc(100vh - 130px);
 }
 
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(100vh - 130px);
-}
-
 .list_movies,
 .search_movies {
   display: flex;
@@ -33,7 +26,7 @@ html {
   min-height: 300px;
   height: calc(100vh / 2.5);
   max-height: 360px;
-  background-image: linear-gradient(to right, rgba(var(--primeflixDark), 0.85) 100%, rgba(var(--primeflixDark), 0.85) 100%), url('../../assets/images/background_default.jpg');
+  background-image: linear-gradient(to right, rgba(var(--primeflixDark), 0.85) 50%, rgba(var(--primeflixDark), 0.75) 100%), url('../../assets/images/background_default.jpg');
 }
 
 .grid_title {
@@ -170,24 +163,11 @@ html {
   margin: 0px auto;
 }
 
-.search_movies button {
-  text-decoration: none;
-  background-color: #3E98C7;
-  color: #ffffff;
-  padding: 10px;
-  border-radius: 5px;
-  margin-top: 14px;
-  border: none;
-  cursor: pointer;
-}
-
 .search_h2 {
   width: 100%;
   text-align: center;
-}
-
-.search_movies button:hover {
-  background-color: #000000;
+  font-weight: 300;
+  margin-bottom: 14px;
 }
 
 @media screen and (min-width: 0px) and (max-width: 1024px) {

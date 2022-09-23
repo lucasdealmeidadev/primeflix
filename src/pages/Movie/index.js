@@ -1,12 +1,9 @@
 import { memo, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faTv } from '@fortawesome/free-solid-svg-icons';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { faPlus, faTv, faCheckSquare } from '@fortawesome/free-solid-svg-icons';
+import { Button, Loading } from '../../components';
 import { toast } from 'react-toastify';
-
-import imageNotFound from '../../assets/images/placeholder.png';
-import placeholderImage from '../../assets/glyphicons/picture-grey.svg';
 
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
@@ -34,6 +31,20 @@ function Movie() {
     loadMovie();
   }, [navigate, id]);
 
+  function conversion(mins) {
+    let hrs = Math.floor(mins / 60);
+    let min = mins % 60;
+
+    hrs = hrs < 10 ? '0' + hrs : hrs;
+    min = min < 10 ? '0' + min : min;
+
+    return `${hrs}h ${min}m`;
+  }
+
+  function formatDate(date) {
+    return date.split('-').reverse().join('/');
+  }
+
   function saveMovie() {
     const myList = localStorage.getItem('@primeflix');
     let savedMovies = JSON.parse(myList) || [];
@@ -53,50 +64,48 @@ function Movie() {
 
   if (loading) {
     return (
-      <div className={styles.movie_loading}>
-        <h2>Carregando detalhes...</h2>
-      </div>
+      <Loading text='Carregando detalhes...' />
     );
   }
 
   return (
     <div className={styles.container}>
-      <div className={styles.movie_info}>
-        <h1>{movie.title}</h1>
-        <div className={styles.img}>
-          {
-            movie.backdrop_path !== null ? (
-              <LazyLoadImage
-                src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                effect='blur'
-                alt={movie.title}
-                title={movie.title}
-                placeholderSrc={placeholderImage}
-              />
-            ) : (
-              <img
-                src={imageNotFound}
-                alt={movie.title}
-                title={movie.title}
-              />
-            )
-          }
-        </div>
+      <div className={styles.title} style={{ backgroundImage: `linear-gradient(to right, rgba(var(--primeflixDark), 0.85) 100%, rgba(var(--primeflixDark), 0.75) 100%), url('https://image.tmdb.org/t/p/original/${movie.backdrop_path}')` }}>
+        <div className={styles.grid_title}>
+          <h1>{movie.title}</h1>
+          <p>
+            {formatDate(movie.release_date)}
+            <span>&sdot;</span>
+            {movie.genres.map(u => u.name).join(', ')}
+            <span>&sdot;</span>
+            {conversion(movie.runtime)}
+          </p>
 
-        <h3>Sinopse</h3>
-        <span>{movie.overview}</span>
-        <strong>Avaliação: {movie.vote_average.toFixed(1)}/10</strong>
+          <div className={styles.area_buttons}>
+            <Button
+              icon={<FontAwesomeIcon icon={faPlus} size='xs' />}
+              text='Salvar'
+              backgroundColor='blue'
+              handleOnClick={saveMovie}
+            />
 
-        <div className={styles.area_buttons}>
-          <button onClick={saveMovie}>
-            <FontAwesomeIcon icon={faPlus} size='xs' /> Salvar
-          </button>
-          <button>
             <a href={`https://youtube.com/results?search_query=${movie.title} Trailer`} target='blank' rel='external'>
-              <FontAwesomeIcon icon={faTv} size='xs' /> Trailer
+              <Button
+                icon={<FontAwesomeIcon icon={faTv} size='xs' />}
+                text='Trailer'
+                backgroundColor='blue'
+              />
             </a>
-          </button>
+          </div>
         </div>
+      </div>
+
+      <div className={styles.movie_info}>
+        <h1>Sinopse</h1>
+        <p>{movie.overview || 'Não Disponível'}</p>
+        <h2>
+          <FontAwesomeIcon icon={faCheckSquare} size='xs' /> {movie.vote_average.toFixed(1)}/10
+        </h2>
       </div>
     </div>
   );

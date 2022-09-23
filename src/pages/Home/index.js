@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faBackward } from '@fortawesome/free-solid-svg-icons';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Button, Loading } from '../../components';
 
 import imageNotFound from '../../assets/images/placeholder.png';
 import placeholderImage from '../../assets/glyphicons/picture-grey.svg';
@@ -89,9 +90,7 @@ function Home() {
 
   if (loading) {
     return (
-      <div className={styles.loading}>
-        <h2>Carregando filmes...</h2>
-      </div>
+      <Loading text='Carregando filmes...'/>
     );
   }
 
@@ -168,9 +167,12 @@ function Home() {
                 Nenhum filme foi encontrado, tente novamente...
               </h2>
 
-              <button onClick={handleBack}>
-                <FontAwesomeIcon icon={faBackward} size='lg' /> Voltar
-              </button>
+              <Button 
+                icon={<FontAwesomeIcon icon={faBackward} size='lg' />}
+                text='Voltar'
+                backgroundColor='blue'
+                handleOnClick={handleBack} 
+              />
             </div>
           )
         }

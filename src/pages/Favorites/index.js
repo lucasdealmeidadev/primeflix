@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRemove, faVideo } from '@fortawesome/free-solid-svg-icons';
+import { Button } from '../../components';
 import { toast } from 'react-toastify';
 
 import styles from './styles.module.css';
@@ -44,12 +45,19 @@ function Favorites() {
 
               <div className={styles.area_buttons}>
                 <Link to={`/movie/${movie.id}`}>
-                  <FontAwesomeIcon icon={faVideo} size='xs' /> Detalhes
+                  <Button
+                    icon={<FontAwesomeIcon icon={faVideo} size='xs' />}
+                    text='Detalhes'
+                    backgroundColor='blue'
+                  />
                 </Link>
 
-                <button onClick={() => removeMovie(movie.id)}>
-                  <FontAwesomeIcon icon={faRemove} size='xs' /> Excluir
-                </button>
+                <Button
+                  icon={<FontAwesomeIcon icon={faRemove} size='xs' />}
+                  text='Excluir'
+                  backgroundColor='red'
+                  handleOnClick={() => removeMovie(movie.id)}
+                />
               </div>
             </li>
           ))}

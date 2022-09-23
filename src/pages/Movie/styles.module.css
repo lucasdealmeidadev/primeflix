@@ -1,78 +1,74 @@
 .container {
   min-height: calc(100vh - 130px);
+  display: block;
+  width: inherit;
 }
 
-.movie_loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(100vh - 130px);
-}
-
-.movie_info {
-  margin: 25px 0 25px 0;
-  display: flex;
-  flex-direction: column;
-  max-width: 880px;
-  padding: 0 8px;
-}
-
-.movie_info h1 {
-  font-size: 1.8em;
-  margin-bottom: 14px;
-  text-transform: uppercase;
+.area_buttons button{
+  font-size: 17px;
+  width: 200px;
+  margin-top: 20px;
   font-weight: bold;
 }
 
-.movie_info img {
-  border-radius: 5px;
-  width: 900px;
-  max-width: 100%;
-  max-height: 450px;
-  object-fit: cover;
+.area_buttons button:first-child {
+  margin-right: 30px;
 }
 
-.movie_info h3 {
+.title {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 300px;
+  height: calc(100vh / 2.5);
+  max-height: 360px;
+}
+
+.grid_title {
+  max-width: 1150px;
+  margin: 0px auto;
+  text-shadow: 1px 1px 0 rgb(0 0 0 / 30%);
+}
+
+
+.title h1 {
+  font-size: 3em !important;
+  font-weight: 700;
+  line-height: 1.5;
+  padding-top: 57px;
+  color: #ffffff;
+  font-size: 2.2rem;
+}
+
+.title p {
+  font-size: 1.2em !important;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.grid_title p span{
+  padding: 5px;
+  width: 20px;
+}
+
+.movie_info {
+  max-width: 1150px;
+  margin: 50px auto;
+}
+
+.movie_info h1,
+.movie_info h2 {
   margin-top: 14px;
-  font-size: 1.6em;
+  font-size: 1.25em;
   padding: 0px 0 10px 0;
 }
 
-.movie_info span {
+.movie_info p {
   margin: 8px 0;
   line-height: 1.6;
   font-size: 1.15em;
   color: rgb(20, 18, 18);
   font-weight: 400;
   text-align: justify;
-}
-
-.movie_info strong {
-  font-size: 1.2em;
-  padding: 10px 0 0px 0;
-}
-
-.area_buttons button {
-  background-color: #3E98C7;
-  color: #fff;
-  margin-right: 12px;
-  margin-top: 14px;
-  margin-left: 0;
-  font-size: 18px;
-  border: 0;
-  outline: none;
-  padding: 12px;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.5s;
-}
-
-.area_buttons button:hover {
-  background-color: #000000;
-}
-
-.area_buttons a {
-  text-decoration: none;
-  color: #ffffff;
-  transition: all 0.5s;
 }
