@@ -62,3 +62,25 @@
 .my_movies div a {
   text-decoration: none;
 }
+
+@media screen and (max-width: 768px) {
+  .my_movies ul {
+    min-width: auto;
+    padding: 10px;
+  }
+
+  .my_movies ul li{
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .my_movies ul li span a{
+    padding-bottom: 300px;
+  }
+
+  .area_buttons button {
+    margin-top: 10px;
+    padding: 10px;
+  }
+}
