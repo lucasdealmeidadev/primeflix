@@ -1,7 +1,3 @@
-html {
-  --primeflixDark: 20, 18, 18;
-}
-
 .container {
   display: block;
   width: inherit;
@@ -26,7 +22,7 @@ html {
   min-height: 300px;
   height: calc(100vh / 2.5);
   max-height: 360px;
-  background-image: linear-gradient(to right, rgba(var(--primeflixDark), 0.85) 50%, rgba(var(--primeflixDark), 0.75) 100%), url('../../assets/images/background_default.jpg');
+  background-image: linear-gradient(to right, rgba(var(--primeflixDark), 0.8) 50%, rgba(var(--primeflixDark), 0.55) 100%), url('../../assets/images/background_default.jpg');
 }
 
 .grid_title {

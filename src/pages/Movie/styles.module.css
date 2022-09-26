@@ -4,11 +4,24 @@
   width: inherit;
 }
 
-.area_buttons button{
-  font-size: 17px;
+.area_buttons button {
+  font-size: 20px;
   width: 200px;
   margin-top: 20px;
   font-weight: bold;
+}
+
+.area_buttons button:nth-child(1) {
+  border: 2px solid #ffffff;
+}
+
+.area_buttons button:nth-child(2) {
+  border: 2px solid #3E98C7;
+}
+
+.area_buttons button:nth-child(1):hover,
+.area_buttons button:nth-child(2):hover {
+  border: 2px solid #ffffff;
 }
 
 .area_buttons button:first-child {
@@ -20,7 +33,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  min-height: 300px;
+  min-height: 410px;
   height: calc(100vh / 2.5);
   max-height: 360px;
 }
@@ -28,17 +41,18 @@
 .grid_title {
   max-width: 1150px;
   margin: 0px auto;
-  text-shadow: 1px 1px 0 rgb(0 0 0 / 30%);
 }
 
 
 .title h1 {
-  font-size: 3em !important;
+  font-size: 2.6em !important;
   font-weight: 700;
   line-height: 1.5;
   padding-top: 57px;
   color: #ffffff;
   font-size: 2.2rem;
+  text-shadow: 1px 1px 0 rgb(0 0 0 / 30%);
+  width: 800px;
 }
 
 .title p {
@@ -47,7 +61,7 @@
   color: #ffffff;
 }
 
-.grid_title p span{
+.grid_title p span {
   padding: 5px;
   width: 20px;
 }
@@ -60,7 +74,7 @@
 .movie_info h1,
 .movie_info h2 {
   margin-top: 14px;
-  font-size: 1.25em;
+  font-size: 1.5em;
   padding: 0px 0 10px 0;
 }
 
@@ -71,4 +85,27 @@
   color: rgb(20, 18, 18);
   font-weight: 400;
   text-align: justify;
+}
+
+.release_date {
+  padding-left: 10px;
+  font-weight: 350;
+}
+
+.grid_title h1,
+.grid_title p,
+.area_buttons {
+  padding-left: 230px;
+}
+
+.grid_title_img {
+  position: absolute;
+  max-width: 200px;
+}
+
+.grid_title_img img {
+  width: 100%;
+  margin-top: 57px;
+  border-radius: 5px;
+  border: 2px solid #ffffff;
 }

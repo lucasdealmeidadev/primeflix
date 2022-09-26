@@ -5,6 +5,10 @@
 }
 
 html {
+  --primeflixDark: 20, 18, 18;
+}
+
+body {
   font-family: Roboto, sans-serif;
   background-color: #f1f1f1;
 }
