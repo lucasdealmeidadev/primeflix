@@ -109,3 +109,84 @@
   border-radius: 5px;
   border: 2px solid #ffffff;
 }
+
+@media screen and (max-width: 768px) {
+  .grid_title_img {
+    position: unset;
+    max-width: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .grid_title_img img {
+    width: 200px;
+  }
+
+  .grid_title h1,
+  .grid_title p,
+  .area_buttons {
+    padding-left: unset;
+  }
+
+  .title {
+    min-height: 100vh;
+  }
+
+  .title h1 {
+    font-size: 1.5em !important;
+    text-align: center;
+    padding-top: 10px;
+    width: unset;
+  }
+
+  .title p {
+    text-align: center;
+    font-size: 0.95em !important;
+    padding-top: 5px;
+  }
+
+  .area_buttons {
+    text-align: center;
+  }
+
+  .area_buttons button {
+    font-size: 15px;
+    width: 140px;
+    padding: 7px !important;
+  }
+
+  .movie_info {
+    margin: 50px auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .grid_title_img img {
+    width: 180px;
+  }
+
+  .area_buttons button:first-child {
+    margin-right: unset;
+  }
+
+  .area_buttons button {
+    width: 70%;
+    padding: 5px !important;
+    margin-top: 10px;
+  }
+
+  .area_buttons button:nth-child(2) {
+    margin-top: 10px;
+  }
+
+  .title h1 {
+    font-size: 1.5em !important;
+  }
+
+  .title p {
+    font-size: 0.9em !important;
+  }
+}
