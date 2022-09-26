@@ -9,9 +9,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
   max-width: 1150px;
   margin: 65px auto;
+}
+
+.search_movies button {
+  margin-bottom: 65px;
+  margin-top: -40px;
 }
 
 .title {
@@ -154,7 +158,7 @@
 }
 
 .search_movies {
-  width: 100vh;
+  width: auto;
   justify-content: center;
   margin: 0px auto;
 }

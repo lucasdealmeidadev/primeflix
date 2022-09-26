@@ -90,7 +90,7 @@ function Home() {
 
   if (loading) {
     return (
-      <Loading text='Carregando filmes...'/>
+      <Loading text='Carregando filmes...' />
     );
   }
 
@@ -159,24 +159,24 @@ function Home() {
             ))
           )
         }
-
-        {
-          (movies.length === 0 || movies !== oldMovies) && (
-            <div className={styles.search_movies}>
-              <h2 className={styles.search_h2} style={{ display: movies.length === 0 ? 'block' : 'none' }}>
-                Nenhum filme foi encontrado, tente novamente...
-              </h2>
-
-              <Button 
-                icon={<FontAwesomeIcon icon={faBackward} size='lg' />}
-                text='Voltar'
-                backgroundColor='blue'
-                handleOnClick={handleBack} 
-              />
-            </div>
-          )
-        }
       </div>
+
+      {
+        (movies.length === 0 || movies !== oldMovies) && (
+          <div className={styles.search_movies}>
+            <h2 className={styles.search_h2} style={{ display: movies.length === 0 ? 'block' : 'none' }}>
+              Nenhum filme foi encontrado, tente novamente...
+            </h2>
+
+            <Button
+              icon={<FontAwesomeIcon icon={faBackward} size='lg' />}
+              text='Voltar'
+              backgroundColor='blue'
+              handleOnClick={handleBack}
+            />
+          </div>
+        )
+      }
     </div>
   );
 }
