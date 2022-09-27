@@ -16,6 +16,7 @@ Foram adicionados os seguintes recursos ao projeto:
 
 ## 🚀 Recursos utilizados
 
+* **[API The Movie Database](https://developers.themoviedb.org/3/getting-started)**
 * **[Axios](https://www.npmjs.com/package/axios)**
 * **[React](https://pt-br.reactjs.org/)**
 * **[React Circular Progressbar](https://www.npmjs.com/package/react-circular-progressbar)**
