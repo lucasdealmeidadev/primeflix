@@ -1,6 +1,6 @@
 # Prime Flix
 
-![Preview](https://github.com/lucasdealmeidadev/primeflix/blob/main/primeflix.gif?raw=true)
+![Preview](https://github.com/lucasdealmeidadev/primeflix/blob/main/primeflix.png?raw=true)
 
 Construindo uma plataforma de filmes com ReactJS. Esse projeto foi uma ampliação da aula ministrada por **Matheus Fraga** na **Udemy**.
 
