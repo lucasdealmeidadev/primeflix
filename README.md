@@ -12,12 +12,14 @@ Foram adicionados os seguintes recursos ao projeto:
 - Adicionado o recurso de Lazy loading para otimização de performasse via carregamento inteligente das imagens;
 - Adicionado ProgressBar via componente para melhor exibição da avaliação do(s) filme(s);
 - Adicionado informações extras na página home e na de visualização do filme conforme disponibilizado na API do The Movie DB;
+- Adicionado biblioteca de icones Font Awesome ao projeto
 - Por fim, foi adicionado componentes extras para facilitar a montagem do layout na fase de desenvolvimento do projeto.
 
 ## 🚀 Recursos utilizados
 
 * **[API The Movie Database](https://developers.themoviedb.org/3/getting-started)**
 * **[Axios](https://www.npmjs.com/package/axios)**
+* **[Font Awesome](https://fontawesome.com/v5/docs/web/use-with/react)**
 * **[React](https://pt-br.reactjs.org/)**
 * **[React Circular Progressbar](https://www.npmjs.com/package/react-circular-progressbar)**
 * **[React Dom](https://www.npmjs.com/package/react-dom)**
