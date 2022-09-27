@@ -7,7 +7,7 @@ Construindo uma plataforma de filmes com ReactJS. Esse projeto foi uma ampliaç�
 Foram adicionados os seguintes recursos ao projeto:
 
 - Layout remodelado;
-- Responsividade a todos as páginas da aplicação;
+- Adicionado responsividade a todos as páginas da aplicação;
 - Adição de recurso de busca para pesquisa de filmes, series ou pessoas;
 - Adicionado o recurso de Lazy loading para otimização de performasse via carregamento inteligente das imagens;
 - Adicionado ProgressBar via componente para melhor exibição da avaliação do(s) filme(s);
