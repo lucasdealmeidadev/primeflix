@@ -1,13 +1,14 @@
 import { memo, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faBackward } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { Button, Loading } from '../../components';
+import { Loading } from '../../components';
 
 import imageNotFound from '../../assets/images/placeholder.png';
 import placeholderImage from '../../assets/glyphicons/picture-grey.svg';
+import loadingImage from '../../assets/images/loading.svg';
 
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'react-circular-progressbar/dist/styles.css';
@@ -17,10 +18,14 @@ import api from '../../services/api';
 
 function Home() {
   const [movies, setMovies] = useState([]);
-  const [oldMovies, setOldMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingSearch, setLoadingSearch] = useState(false);
   const [search, setSearch] = useState('');
-  const [searchMovies, setSearchMovies] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [counts, setCounts] = useState({
+    total_pages: 500,
+    total_results: 10000
+  });
 
   const formatDate = (value) => {
     if (value === null) return 'Não Disponível';
@@ -36,57 +41,87 @@ function Home() {
     const date = new Date(value);
     return date.toLocaleDateString('pt-br', options);
   }
-
-  const handleBack = () => {
-    setMovies(oldMovies);
-    setSearch('');
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    setSearch(search);
+    setCurrentPage(1);
   }
 
   const handleChange = (e) => {
     setSearch(e.target.value);
+    setCurrentPage(1);
   }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (search === '') return;
-
-    setSearchMovies(true);
-
-    const response = await api.get('search/movie', {
-      params: {
-        query: search
-      }
-    });
-
-    const { results } = response.data;
-
-    if (results.length > 0) {
-      setMovies(results);
-    }
-
-    setMovies(results);
-    setSearchMovies(false);
-  }
-
 
   useEffect(() => {
     async function loadMovies() {
-      const response = await api.get('movie/now_playing', {
-        params: {
-          page: 1,
+      const params = {
+        params: { 
+          page: currentPage 
         }
+      };
+
+      if (search !== '') {
+        params.params.query = search;
+      }
+
+      const url = (search === '') ? 'movie/now_playing' : 'search/movie';
+      
+      const response = await api.get(url, params);
+
+      const { results, total_pages, total_results } = response.data;
+
+      setMovies((previous) =>
+        currentPage === 1 ? results : [...previous, ...results]
+      );
+
+      setCounts({
+        total_pages: total_pages,
+        total_results: total_results
       });
 
-      const { results } = response.data;
-
-      setMovies(results);
-      setOldMovies(results);
+      setLoadingSearch(false);
       setLoading(false);
     }
 
     loadMovies();
-  }, []);
+  }, [search, currentPage]);
+
+  useEffect(() => {
+    const hasNext = counts.total_pages > currentPage;
+
+    const loadMoreItems = () => {
+      if (hasNext) {
+        setCurrentPage((page) => page + 1);
+        setLoadingSearch(true);
+      }
+    }
+
+    const handleScroll = () => {
+      const windowHeight = 'innerHeight' in window ? window.innerHeight
+                                                   : document.documentElement.offsetHeight;
+      const body = document.body;
+      const html = document.documentElement;
+      const docHeight = Math.max(
+        body.scrollHeight,
+        body.offsetHeight,
+        html.clientHeight,
+        html.scrollHeight,
+        html.offsetHeight
+      );
+  
+      const windowBottom = windowHeight + window.scrollY;
+  
+      if (windowBottom >= docHeight - 1) {
+        loadMoreItems();
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [counts, currentPage]);
 
   if (loading) {
     return (
@@ -102,7 +137,7 @@ function Home() {
           <p>Milhões de Filmes, Séries e Pessoas para Descobrir. Explore já.</p>
           <form onSubmit={handleSubmit}>
             <input
-              type='text'
+              type='search'
               name='search'
               id='search'
               placeholder='Pesquise pelo seu filme favorito...'
@@ -117,63 +152,59 @@ function Home() {
       </div>
       <div className={styles.list_movies}>
         {
-          searchMovies ? (
+          movies.map((movie) => (
+            <article key={movie.id}>
+              <Link to={`/movie/${movie.id}`}>
+                {
+                  movie.poster_path !== null ? (
+                    <LazyLoadImage
+                      src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+                      effect='blur'
+                      alt={movie.title}
+                      title={movie.title}
+                      placeholderSrc={placeholderImage}
+                    />
+                  ) : (
+                    <img
+                      src={imageNotFound}
+                      alt={movie.title}
+                      title={movie.title}
+                    />
+                  )
+                }
+              </Link>
+              <div className={styles.progressbar}>
+                <CircularProgressbar
+                  value={movie.vote_average * 10}
+                  text={`${movie.vote_average}%`}
+                />
+              </div>
+              <Link to={`/movie/${movie.id}`}>
+                <strong>
+                  {movie.title.substring(0, 18)} {movie.title.length > 18 && '...'}
+                </strong>
+              </Link>
+              <p>{formatDate(movie.release_date || null)}</p>
+            </article>
+          ))
+        }
+
+        {
+          loadingSearch && (
             <div className={styles.search_movies}>
-              <h2>Carregando filmes...</h2>
+              <img src={loadingImage} alt='Carregando filmes...' width={25} height={25}/>
+              <h3>Carregando filmes...</h3>
             </div>
-          ) : (
-            movies.map((movie) => (
-              <article key={movie.id}>
-                <Link to={`/movie/${movie.id}`}>
-                  {
-                    movie.poster_path !== null ? (
-                      <LazyLoadImage
-                        src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
-                        effect='blur'
-                        alt={movie.title}
-                        title={movie.title}
-                        placeholderSrc={placeholderImage}
-                      />
-                    ) : (
-                      <img
-                        src={imageNotFound}
-                        alt={movie.title}
-                        title={movie.title}
-                      />
-                    )
-                  }
-                </Link>
-                <div className={styles.progressbar}>
-                  <CircularProgressbar
-                    value={movie.vote_average * 10}
-                    text={`${movie.vote_average}%`}
-                  />
-                </div>
-                <Link to={`/movie/${movie.id}`}>
-                  <strong>
-                    {movie.title.substring(0, 18)} {movie.title.length > 18 && '...'}
-                  </strong>
-                </Link>
-                <p>{formatDate(movie.release_date || null)}</p>
-              </article>
-            ))
           )
         }
       </div>
 
       {
-        (movies.length === 0 || movies !== oldMovies) && (
+        movies.length === 0 && (
           <div className={styles.search_movies}>
-            <h2 className={styles.search_h2} style={{ display: movies.length === 0 ? 'block' : 'none' }}>
+            <h2 className={styles.search_h2}>
               Nenhum filme foi encontrado, tente novamente...
             </h2>
-
-            <Button
-              icon={<FontAwesomeIcon icon={faBackward} size='lg' />}
-              text='Voltar'
-              backgroundColor='blue'
-              handleOnClick={handleBack}
-            />
           </div>
         )
       }
