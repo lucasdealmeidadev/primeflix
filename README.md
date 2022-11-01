@@ -9,6 +9,7 @@ Foram adicionados os seguintes recursos ao projeto:
 - Layout remodelado;
 - Adicionado responsividade a todos as páginas da aplicação;
 - Adição de recurso de busca para pesquisa de filmes, series ou pessoas;
+- Adicionado recurso de paginação ao projeto;
 - Adicionado o recurso de Lazy loading para otimização de performance via carregamento inteligente das imagens;
 - Adicionado ProgressBar via componente para melhor exibição da avaliação do(s) filme(s);
 - Adicionado informações extras na página home e na de visualização do filme conforme disponibilizado na API do The Movie DB;
